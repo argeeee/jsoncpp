@@ -1,0 +1,29 @@
+{
+  "tasks": [
+    {
+      "type": "cppbuild",
+      "label": "C/C++: clang++ compila il file attivo",
+      "command": "/usr/local/opt/llvm/bin/clang++",
+      "args": [
+        "-fcolor-diagnostics",
+        "-fansi-escape-codes",
+        "-g",
+        "${workspaceFolder}/src/glangc/src/main.cpp",
+        "-o",
+        "${workspaceFolder}/bin/glangc"
+      ],
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "detail": "Attività generata dal debugger."
+    }
+  ],
+  "version": "2.0.0"
+}

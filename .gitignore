@@ -1,2 +1,8 @@
-.vscode
 bin/
+build/
+
+# External libs
+lib/googletest
+
+*.dySYM
+**/.DS_Store
