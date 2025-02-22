@@ -2,7 +2,7 @@
 
 namespace JsonCpp::Models {
 
-  enum class JsonKind {
+  enum class JsonTokenKind {
 		EndOfFileToken,
 		WhitespaceToken,
 		UndefinedToken,
@@ -16,9 +16,6 @@ namespace JsonCpp::Models {
 		ClosedBrace,
 		CommaToken,
 		ColonToken,
-		
-		ArrayExpression,
-		ObjectExpression,
 	};
 
 }

@@ -38,7 +38,7 @@ namespace JsonCpp::UseCases {
 
 		return make_shared<JsonToken>(
 			start,
-			JsonKind::WhitespaceToken,
+			JsonTokenKind::WhitespaceToken,
 			string_view(_text).substr(start, end - start)
 		);
 	}
@@ -65,13 +65,13 @@ namespace JsonCpp::UseCases {
 
 		return make_shared<JsonToken>(
 			start,
-			JsonKind::NumberToken,
+			JsonTokenKind::NumberToken,
 			string_view(_text).substr(start, length),
 			GetNumberValue(start, length, isFloat)
 		);
 	}
 
-	shared_ptr<JsonToken> Lexer::ReadSingleCharacterToken(JsonKind kind) {
+	shared_ptr<JsonToken> Lexer::ReadSingleCharacterToken(JsonTokenKind kind) {
 		long start = _position;
 		_position++;
 		long end = _position;
@@ -99,7 +99,7 @@ namespace JsonCpp::UseCases {
 
 		return make_shared<JsonToken>(
 			start,
-			JsonKind::StringToken,
+			JsonTokenKind::StringToken,
 			string_view(_text).substr(start, length),
 			_text.substr(start + 1, length - 2)
 		);
@@ -108,26 +108,26 @@ namespace JsonCpp::UseCases {
 	shared_ptr<JsonToken> Lexer::ReadIdentifierToken() {
 		long start = _position;
 		int incrementAmount = 0;
-		JsonKind kind;
+		JsonTokenKind kind;
 		any value;
 
 		if (_text.compare(_position, 4, "true") == 0) {
 			incrementAmount = 4;
-			kind = JsonKind::BooleanToken;
+			kind = JsonTokenKind::BooleanToken;
 			value = true;
 		}
 		else if (_text.compare(_position, 5, "false") == 0) {
 			incrementAmount = 5;
-			kind = JsonKind::BooleanToken;
+			kind = JsonTokenKind::BooleanToken;
 			value = false;
 		}
 		else if (_text.compare(_position, 4, "null") == 0) {
 			incrementAmount = 4;
-			kind = JsonKind::NullToken;
+			kind = JsonTokenKind::NullToken;
 		}
 		else if (_text.compare(_position, 9, "undefined") == 0) {
 			incrementAmount = 9;
-			kind = JsonKind::UndefinedToken;
+			kind = JsonTokenKind::UndefinedToken;
 		}
 		else {
 			// TODO: better errors
@@ -156,21 +156,21 @@ namespace JsonCpp::UseCases {
 
 		switch (Current()) {
 		 	case '[':
-				return ReadSingleCharacterToken(JsonKind::OpenSquareBracket);
+				return ReadSingleCharacterToken(JsonTokenKind::OpenSquareBracket);
 		 	case ']':
-				return ReadSingleCharacterToken(JsonKind::ClosedSquareBracket);
+				return ReadSingleCharacterToken(JsonTokenKind::ClosedSquareBracket);
 			case '{':
-				return ReadSingleCharacterToken(JsonKind::OpenBrace);
+				return ReadSingleCharacterToken(JsonTokenKind::OpenBrace);
 			case '}':
-				return ReadSingleCharacterToken(JsonKind::ClosedBrace);
+				return ReadSingleCharacterToken(JsonTokenKind::ClosedBrace);
 			case ',':
-				return ReadSingleCharacterToken(JsonKind::CommaToken);
+				return ReadSingleCharacterToken(JsonTokenKind::CommaToken);
 			case ':':
-				return ReadSingleCharacterToken(JsonKind::ColonToken);
+				return ReadSingleCharacterToken(JsonTokenKind::ColonToken);
 			case '"':
 				return ReadStringToken();
 			case '\0':
-				return make_shared<JsonToken>(_position, JsonKind::EndOfFileToken, string_view("\0"));
+				return make_shared<JsonToken>(_position, JsonTokenKind::EndOfFileToken, string_view("\0"));
 			default: 
 				return ReadIdentifierToken();
 		}

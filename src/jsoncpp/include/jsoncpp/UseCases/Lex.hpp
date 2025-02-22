@@ -5,7 +5,7 @@
 #include <any>
 #include <exception>
 
-#include "jsoncpp/Models/JsonKind.hpp"
+#include "jsoncpp/Models/JsonTokenKind.hpp"
 #include "jsoncpp/Models/JsonToken.hpp"
 
 namespace JsonCpp::UseCases {
@@ -24,7 +24,7 @@ namespace JsonCpp::UseCases {
 
     shared_ptr<JsonToken> ReadWhitespaceToken();
     shared_ptr<JsonToken> ReadNumberToken();
-    shared_ptr<JsonToken> ReadSingleCharacterToken(JsonKind kind);
+    shared_ptr<JsonToken> ReadSingleCharacterToken(JsonTokenKind kind);
     shared_ptr<JsonToken> ReadStringToken();
     shared_ptr<JsonToken> ReadIdentifierToken();
 

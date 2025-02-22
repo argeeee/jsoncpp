@@ -3,7 +3,7 @@
 #include <any>
 #include <string_view>
 
-#include "jsoncpp/Models/JsonKind.hpp"
+#include "jsoncpp/Models/JsonTokenKind.hpp"
 
 namespace JsonCpp::Models {
 
@@ -12,12 +12,12 @@ namespace JsonCpp::Models {
   class JsonToken {
    private:
     long _position;
-    JsonKind _kind;
+    JsonTokenKind _kind;
     string_view _text;
     any _value;
 
    public:
-    JsonToken(long position, JsonKind kind, string_view text, any value = any())
+    JsonToken(long position, JsonTokenKind kind, string_view text, any value = any())
       : _position(position),
         _kind(kind),
         _text(text),
@@ -29,7 +29,7 @@ namespace JsonCpp::Models {
       return _position;
     }
 
-    JsonKind Kind() {
+    JsonTokenKind Kind() {
       return _kind;
     }
     
