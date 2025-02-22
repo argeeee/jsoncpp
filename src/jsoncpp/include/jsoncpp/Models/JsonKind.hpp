@@ -3,16 +3,22 @@
 namespace JsonCpp::Models {
 
   enum class JsonKind {
+		EndOfFileToken,
+		WhitespaceToken,
 		UndefinedToken,
 		NullToken,
 		NumberToken,
 		BooleanToken,
 		StringToken,
-		ArrayToken,
-		ObjectToken,
-
-		WhitespaceToken,
-		EndOfFileToken,
+		OpenSquareBracket,
+		ClosedSquareBracket,
+		OpenBrace,
+		ClosedBrace,
+		CommaToken,
+		ColonToken,
+		
+		ArrayExpression,
+		ObjectExpression,
 	};
 
 }
