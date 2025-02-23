@@ -12,22 +12,22 @@ namespace JsonCpp::Models {
 
   class JsonExpression {
    private:
-	 	JsonExpressionKind _kind;
-		any _value;
+     JsonExpressionKind _kind;
+    any _value;
 
    public:
-	 	JsonExpression(JsonExpressionKind kind, any value)
-			: _kind(kind), _value(value)
+     JsonExpression(JsonExpressionKind kind, any value)
+      : _kind(kind), _value(value)
     {
     }
 
-		JsonExpressionKind Kind() {
-			return _kind;
-		}
+    JsonExpressionKind Kind() {
+      return _kind;
+    }
 
-		any& Value() {
-			return _value;
-		}
+    any& Value() {
+      return _value;
+    }
   };
 
 }

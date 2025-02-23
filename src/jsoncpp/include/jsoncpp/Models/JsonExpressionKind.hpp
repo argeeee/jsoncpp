@@ -3,14 +3,14 @@
 namespace JsonCpp::Models {
 
   enum class JsonExpressionKind {
-		Null,
-		Undefined,
-		Number,
-		Bool,
-		String,
-		Object,
-		Array
-	};
+    Null,
+    Undefined,
+    Number,
+    Bool,
+    String,
+    Object,
+    Array
+  };
 
 }
 
